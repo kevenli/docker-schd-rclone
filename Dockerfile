@@ -12,4 +12,5 @@ FROM python:3.8-alpine
 WORKDIR /app
 COPY --from=builder /venv /venv
 ENV PATH="/venv/bin:$PATH"
+ENV XDG_CONFIG_HOME=/config
 COPY --from=builder /usr/bin/rclone /usr/bin/rclone
