@@ -2,7 +2,8 @@ FROM python:3.8-alpine AS builder
 RUN apk update && apk add build-base 
 RUN python -m venv /venv
 ENV PATH="/venv/bin:$PATH"
-RUN pip install schd
+ADD requirements.txt .
+RUN pip install -r requirements.txt
 COPY package/rclone-v1.65.0-linux-amd64.zip .
 RUN unzip rclone-v1.65.0-linux-amd64.zip
 RUN cp rclone-v1.65.0-linux-amd64/rclone /usr/bin
